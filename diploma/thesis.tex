@@ -1,0 +1,131 @@
+\documentclass[10pt, bachelor,subf,href,colorlinks=true
+%,fixint=false
+%,times
+]{disser}
+
+\usepackage[
+  a4paper, mag=1000, includefoot,
+  left=2.5cm, right=1.5cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm
+]{geometry}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{ucs}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{cmap}
+%\usepackage{subfig}
+%\usepackage{tikz}
+%\usepackage{float}
+%\usepackage{caption}
+\usepackage[font=small]{subcaption}
+%AMS TEX значки и пр.
+\usepackage{amssymb, amsthm, amsmath}
+\usepackage[noend]{algorithmic}
+%\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol, multirow}
+\usepackage{ragged2e}
+\ifpdf\usepackage{epstopdf}\fi
+
+% Номера страниц сверху и по центру
+%\def\headfont{\small}
+%\pagestyle{headcenter}
+%\chapterpagestyle{empty}
+
+% Использовать полужирное начертание для векторов
+\let\vec=\mathbf
+
+% Включать подсекции в оглавление
+\setcounter{tocdepth}{2}
+
+\graphicspath{{pics/}}
+
+\numberwithin{equation}{section}
+\begin{document}
+\newcommand{\hmax}{\ensuremath{h^{max}}}
+\newcommand{\hmin}{\ensuremath{h^{min}}}
+
+\newcommand{\hini}[1]{h^{(i)}_{#1}}
+\newcommand{\hfin}[1]{h^{(f)}_{#1}}
+
+\newcommand{\Tin}{\ensuremath{T^{in}}}
+\newcommand{\Tout}{\ensuremath{T^{out}}}
+\newcommand{\Tres}{\ensuremath{T^{res}}}
+\newcommand{\tin}{\ensuremath{t^{in}}}
+\newcommand{\tout}{\ensuremath{t^{out}}}
+\newcommand{\tres}{\ensuremath{t^{res}}}
+\newcommand{\PER}{\ensuremath{q}}
+\newcommand{\Iin}{\ensuremath{I^{in}}}
+\newcommand{\Idis}{\ensuremath{I^{dis}}}
+\newcommand{\Iout}{\ensuremath{I^{out}}}
+
+\newcommand{\Qmax}{\ensuremath{Q^{max}}}
+
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+
+\newcommand{\pin}{\ensuremath{p^{in}}}
+\newcommand{\Pin}{\ensuremath{P^{in}}}
+\newcommand{\pout}{\ensuremath{p^{out}}}
+\newcommand{\Pout}{\ensuremath{P^{out}}}
+
+
+
+\institution{Московский физико-технический институт \\ (государственный университет) \\ Факультет радиотехники и кибернетики \\ Кафедра проблем передачи и обработки информации}
+
+% Имя лица, допускающего к защите (зав. кафедрой)
+\apname{академик РАН А.П. Кулешов}
+
+\title{Выпускная квалификационная работа\\БАКАЛАВРА}
+
+\topic{Передача мультимедийных данных в сетях Wi-Fi Mesh с помощью механизма детерминированного доступа}
+
+% Автор
+\author       {Иванов А.С.} % ФИО
+\group        {011} % Группа
+\coursenum    {010900} % Номер направления
+\course       {Прикладные математика и физика}
+%\masterprognum{010674} % Номер магистерской программы
+%\masterprog   {Телекоммуникационные сети и системы}
+
+% Научный руководитель
+\sa      {Хоров Е.М.}
+\sastatus{к.~т.~н.}
+
+% Рецензент
+%\rev      {Якимов М.Ю.}
+%\revstatus{к.~т.~н.}
+
+% Консультант
+%\conspec{вопросам\\охраны труда}
+%\con{ФИО консультанта}
+%\constatus{к.~т.~н., доц.}
+
+% Город и год
+\city{Москва}
+\date{\number\year}
+
+\maketitle
+\newpage
+
+\tableofcontents
+
+\intro
+\input{intro}
+\input{problem}
+\input{noBlockAck}
+\input{BlockAck}
+\include{algorithm}
+\include{numerical}
+
+\conclusion
+\input{conclusion}
+
+%\appendix
+%\input{app-a}
+
+\bibliographystyle{ugost2008}
+\bibliography{thesis}
+
+\end{document}
