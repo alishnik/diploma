@@ -14,6 +14,11 @@
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
 \usepackage{cmap}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 %\usepackage{subfig}
 %\usepackage{tikz}
 %\usepackage{float}
@@ -21,7 +26,7 @@
 \usepackage[font=small]{subcaption}
 %AMS TEX значки и пр.
 \usepackage{amssymb, amsthm, amsmath}
-\usepackage[noend]{algorithmic}
+%\usepackage[noend]{algorithmic}
 %\usepackage{array}
 \usepackage{tabularx}
 \usepackage{multicol, multirow}
@@ -62,6 +67,11 @@
 
 \newcommand{\Qmax}{\ensuremath{Q^{max}}}
 
+\newcommand{\DQoS}{\ensuremath{D^{QoS}}}
+\newcommand{\PLRQoS}{\ensuremath{PLR^{QoS}}}
+\newcommand{\qdet}{\ensuremath{q^{det}}}
+\newcommand{\qran}{\ensuremath{q^{ran}}}
+
 \renewcommand{\le}{\leqslant}
 \renewcommand{\ge}{\geqslant}
 
@@ -75,15 +85,15 @@
 \institution{Московский физико-технический институт \\ (государственный университет) \\ Факультет радиотехники и кибернетики \\ Кафедра проблем передачи и обработки информации}
 
 % Имя лица, допускающего к защите (зав. кафедрой)
-\apname{академик РАН А.П. Кулешов}
+\apname{такой-то}
 
 \title{Выпускная квалификационная работа\\БАКАЛАВРА}
 
 \topic{Передача мультимедийных данных в сетях Wi-Fi Mesh с помощью механизма детерминированного доступа}
 
 % Автор
-\author       {Иванов А.С.} % ФИО
-\group        {011} % Группа
+\author       {Бабаев А.А.} % ФИО
+\group        {311} % Группа
 \coursenum    {010900} % Номер направления
 \course       {Прикладные математика и физика}
 %\masterprognum{010674} % Номер магистерской программы
@@ -113,19 +123,20 @@
 
 \intro
 \input{intro}
+\newpage
 \input{problem}
 \input{noBlockAck}
-\input{BlockAck}
-\include{algorithm}
-\include{numerical}
+%\input{BlockAck}
+%\include{algorithm}
+%\include{numerical}
 
 \conclusion
-\input{conclusion}
+%\input{conclusion}
 
 %\appendix
 %\input{app-a}
 
 \bibliographystyle{ugost2008}
-\bibliography{thesis}
+%\bibliography{thesis}
 
 \end{document}
