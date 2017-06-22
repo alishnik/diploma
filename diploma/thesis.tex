@@ -1,42 +1,64 @@
-\documentclass[10pt, bachelor,subf,href,colorlinks=true
-%,fixint=false
-%,times
-]{disser}
+\documentclass[10pt,bachelor,subf,href,colorlinks=true]{disser}
 
 \usepackage[
   a4paper, mag=1000, includefoot,
   left=2.5cm, right=1.5cm, top=2cm, bottom=2cm, headsep=1cm, footskip=1cm
 ]{geometry}
-\usepackage{mathtext}
-\usepackage[T2A]{fontenc}
+
 \usepackage[utf8]{inputenc}
-%\usepackage{ucs}
 \usepackage[english,russian]{babel}
+\usepackage[T2A]{fontenc}
 \usepackage{graphicx}
 \usepackage{cmap}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{mathtools}
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
-%\usepackage{subfig}
 %\usepackage{tikz}
 %\usepackage{float}
-%\usepackage{caption}
-\usepackage[font=small]{subcaption}
-%AMS TEX значки и пр.
-\usepackage{amssymb, amsthm, amsmath}
-%\usepackage[noend]{algorithmic}
-%\usepackage{array}
-\usepackage{tabularx}
-\usepackage{multicol, multirow}
-\usepackage{ragged2e}
-\ifpdf\usepackage{epstopdf}\fi
 
-% Номера страниц сверху и по центру
-%\def\headfont{\small}
-%\pagestyle{headcenter}
-%\chapterpagestyle{empty}
+%AMS TEX значки и пр.
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{bm}
+%\usepackage{multicol}
+
+\newcommand{\Nmax}{N}
+\newcommand{\DQoS}{D_{QoS}}
+\newcommand{\PLRQoS}{PLR_{QoS}}
+\newcommand{\Tin}{T_{in}}
+%\newcommand{\Tres}[1]{T_{#1}}
+\newcommand{\tin}{t_{in}}
+\newcommand{\tres}{t_{res}}
+\newcommand{\Iin}{I_{in}}
+\newcommand{\Idis}{I_{dis}}
+\newcommand{\Tbusy}{T_{busy}}
+\newcommand{\pin}{p^{in}}
+\newcommand{\BatchSize}{\mathcal{M}}
+\newcommand{\PER}{q}
+\newcommand{\qdet}{\PER_{det}}
+\newcommand{\qran}{\PER_{ran}}
+\newcommand{\nretries}{\mathcal{R}}
+\newcommand{\kh}{k_{h}}
+\newcommand{\Dran}{D_{ran}}
+\newcommand{\Ddet}{D_{det}}
+\newcommand{\PSR}{p}
+\newcommand{\htt}[1]{h_{#1}}
+\newcommand{\mtt}[1]{m_{#1}}
+\newcommand{\ntt}[1]{n_{#1}}
+\newcommand{\Dres}{D_{res}}
+\newcommand{\BlockSize}{b}
+\newcommand{\Tres}[1][]{%
+\ifthenelse{\equal{#1}{}}{T_{res}}{T_{#1}}%
+}
+\newcommand{\flow}{S}
+\newcommand{\flowsize}{L}
+\newcommand{\lost}{\varphi}
+\newcommand{\proc}{\psi}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%\ifpdf\usepackage{epstopdf}\fi
 
 % Использовать полужирное начертание для векторов
 \let\vec=\mathbf
@@ -44,41 +66,42 @@
 % Включать подсекции в оглавление
 \setcounter{tocdepth}{2}
 
-\graphicspath{{pics/}}
+\graphicspath{{pics/new/}{pics/decor/}}
 
 \numberwithin{equation}{section}
 \begin{document}
-\newcommand{\hmax}{\ensuremath{h^{max}}}
-\newcommand{\hmin}{\ensuremath{h^{min}}}
 
-\newcommand{\hini}[1]{h^{(i)}_{#1}}
-\newcommand{\hfin}[1]{h^{(f)}_{#1}}
+%\newcommand{\hmax}{\ensuremath{h^{max}}}
+%\newcommand{\hmin}{\ensuremath{h^{min}}}
 
-\newcommand{\Tin}{\ensuremath{T^{in}}}
-\newcommand{\Tout}{\ensuremath{T^{out}}}
-\newcommand{\Tres}{\ensuremath{T^{res}}}
-\newcommand{\tin}{\ensuremath{t^{in}}}
-\newcommand{\tout}{\ensuremath{t^{out}}}
-\newcommand{\tres}{\ensuremath{t^{res}}}
-\newcommand{\PER}{\ensuremath{q}}
-\newcommand{\Iin}{\ensuremath{I^{in}}}
-\newcommand{\Idis}{\ensuremath{I^{dis}}}
-\newcommand{\Iout}{\ensuremath{I^{out}}}
+%\newcommand{\hini}[1]{h^{(i)}_{#1}}
+%\newcommand{\hfin}[1]{h^{(f)}_{#1}}
 
-\newcommand{\Qmax}{\ensuremath{Q^{max}}}
+%\newcommand{\Tin}{\ensuremath{T^{in}}}
+%\newcommand{\Tout}{\ensuremath{T^{out}}}
+%\newcommand{\Tres}{\ensuremath{T^{res}}}
+%\newcommand{\tin}{\ensuremath{t^{in}}}
+%\newcommand{\tout}{\ensuremath{t^{out}}}
+%\newcommand{\tres}{\ensuremath{t^{res}}}
+%\newcommand{\PER}{\ensuremath{q}}
+%\newcommand{\Iin}{\ensuremath{I^{in}}}
+%\newcommand{\Idis}{\ensuremath{I^{dis}}}
+%\newcommand{\Iout}{\ensuremath{I^{out}}}
 
-\newcommand{\DQoS}{\ensuremath{D^{QoS}}}
-\newcommand{\PLRQoS}{\ensuremath{PLR^{QoS}}}
-\newcommand{\qdet}{\ensuremath{q^{det}}}
-\newcommand{\qran}{\ensuremath{q^{ran}}}
+%\newcommand{\Qmax}{\ensuremath{Q^{max}}}
 
-\renewcommand{\le}{\leqslant}
-\renewcommand{\ge}{\geqslant}
+%\newcommand{\DQoS}{\ensuremath{D^{QoS}}}
+%\newcommand{\PLRQoS}{\ensuremath{PLR^{QoS}}}
+%\newcommand{\qdet}{\ensuremath{q^{det}}}
+%\newcommand{\qran}{\ensuremath{q^{ran}}}
 
-\newcommand{\pin}{\ensuremath{p^{in}}}
-\newcommand{\Pin}{\ensuremath{P^{in}}}
-\newcommand{\pout}{\ensuremath{p^{out}}}
-\newcommand{\Pout}{\ensuremath{P^{out}}}
+%\renewcommand{\le}{\leqslant}
+%\renewcommand{\geometry{•}e}{\geqslant}
+
+%\newcommand{\pin}{\ensuremath{p^{in}}}
+%\newcommand{\Pin}{\ensuremath{P^{in}}}
+%\newcommand{\pout}{\ensuremath{p^{out}}}
+%\newcommand{\Pout}{\ensuremath{P^{out}}}
 
 
 
@@ -120,23 +143,19 @@
 \newpage
 
 \tableofcontents
-
 \intro
 \input{intro}
 \newpage
 \input{problem}
-\input{noBlockAck}
-%\input{BlockAck}
-%\include{algorithm}
-%\include{numerical}
-
+\newpage
+\input{model}
+\newpage
+%\input{numerical}
+\newpage
 \conclusion
 %\input{conclusion}
 
-%\appendix
-%\input{app-a}
-
-\bibliographystyle{ugost2008}
-%\bibliography{thesis}
+\bibliographystyle{gost2008}
+\bibliography{all.bib}
 
 \end{document}
